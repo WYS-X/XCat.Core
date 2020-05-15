@@ -89,74 +89,11 @@ public static class Util
             return false;
     }
 
-    /// <summary>
-    /// 登陆端名称
-    /// </summary>
-    /// <param name="clientId"></param>
-    /// <returns></returns>
-    public static string GetLoginType(int clientId)
-    {
-        string type = "";
-        switch (clientId)
-        {
-            case 1: type = "微信"; break;
-            case 2: type = "IOS"; break;
-            case 3: type = "Android"; break;
-            case 4: type = "师傅"; break;
-            case 5: type = "咨询师"; break;
-            case 6: type = "商城"; break;
-            case 9: type = "老板App"; break;
-            case 11: type = "售前App"; break;
-            case 13: type = "供应商公众号"; break;
-            default: type = "其他"; break;
-        }
-        return type;
-    }
-
     public static string MD5(string str)
     {
         MD5 md5 = new MD5CryptoServiceProvider();
         byte[] bytes = md5.ComputeHash(Encoding.Default.GetBytes(str));
         return BitConverter.ToString(bytes).Replace("-", "");
-    }
-
-    public static string Resize(string url, string m, int w = 0, int h = 0)
-    {
-        if (url.Contains("360buyimg.com"))
-            return url;
-        string rel = "";
-        if (url.Contains("?"))
-            rel = url + "&x-oss-process=image/resize,";
-        else
-            rel = url + "?x-oss-process=image/resize,";
-        if (!string.IsNullOrEmpty(m))
-            rel += "m_" + m;
-        if (w > 0)
-            rel += ",w_" + w;
-        if (h > 0)
-            rel += ",h_" + h;
-        return rel;
-    }
-    /// <summary>
-    /// 从字符串中重置图片尺寸
-    /// </summary>
-    /// <param name="str"></param>
-    /// <param name="m"></param>
-    /// <param name="w"></param>
-    /// <param name="h"></param>
-    /// <returns></returns>
-    public static string ResizeFromString(string str, string m, int w, int h)
-    {
-        Regex regex = new Regex(@"http://image.it-hdz.com/[\w/-]{1,}.(jpg|png){1}");
-        MatchCollection mc = regex.Matches(str);
-        if (mc.Count > 0)
-        {
-            foreach (Match item in mc)
-            {
-                str = str.Replace(item.Value, Resize(item.Value, m, w, h));
-            }
-        }
-        return str;
     }
 
     //public static bool CreateQrCode(string path, string content)

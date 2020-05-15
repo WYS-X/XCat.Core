@@ -17,7 +17,7 @@ public class Comparer<T, V> : IEqualityComparer<T>
         keySelector = func;
     }
 
-    public bool Equals([AllowNull] T x, [AllowNull] T y)
+    public bool Equals(T x, T y)
     {
         if (x == null || y == null)
         {
@@ -26,7 +26,7 @@ public class Comparer<T, V> : IEqualityComparer<T>
         return keySelector(x).Equals(keySelector(y));
     }
 
-    public int GetHashCode([DisallowNull] T obj)
+    public int GetHashCode(T obj)
     {
         if (obj == null)
             return 0;
