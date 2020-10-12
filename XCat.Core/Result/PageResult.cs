@@ -8,6 +8,10 @@ public class PageResult<T> : Result
     {
         this.Data = new List<T>();
     }
+    public PageResult(int code, string msg = ""): base(code, msg)
+    {
+
+    }
 
     public int Index { get; set; }
     public int Size { get; set; }
