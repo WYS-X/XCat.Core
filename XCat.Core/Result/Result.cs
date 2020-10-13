@@ -29,7 +29,7 @@ public class Result : IResult
 public class Result<T> : Result, IResult<T>
 {
     public Result() : base() { Data = default; }
-    public Result(T data, string msessage) : base(0, msessage) { Data = data; }
+    public Result(T data, string msessage = "") : base(0, msessage) { Data = data; }
     public T Data { get; set; }
 
     public void Succeed(T data)
