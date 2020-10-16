@@ -1,4 +1,6 @@
 ﻿
+using static OrderByExpression;
+
 public class SearchBase
 {
     public SearchBase()
@@ -29,4 +31,13 @@ public class SearchBase
     }
 
     public string Text { get; set; }
+
+    /// <summary>
+    /// 排序字段
+    /// </summary>
+    public string Sort { get; set; }
+    /// <summary>
+    /// 排序方式
+    /// </summary>
+    public SortDirection SortOrder { get; set; }
 }

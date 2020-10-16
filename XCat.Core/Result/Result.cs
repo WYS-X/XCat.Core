@@ -13,23 +13,14 @@ public class Result : IResult
     public int Code { get; set; }
     public string Message { get; set; }
 
-    public void Fail(int code = 1, string message = "")
-    {
-        this.Code = code;
-        this.Message = message;
-    }
-
-    public void Succeed(string message = "")
-    {
-        this.Code = 0;
-        this.Message = message;
-    }
+    public static Result Success(string message = "") { return new Result(0, message); }
+    public static Result Fail(int code = 1, string message = "") { return new Result(code, message); }
 }
 
 public class Result<T> : Result, IResult<T>
 {
     public Result() : base() { Data = default; }
-    public Result(T data, string msessage = "") : base(0, msessage) { Data = data; }
+    public Result(T data, string message = "") : base(0, message) { Data = data; }
     public T Data { get; set; }
 
     public void Succeed(T data)
