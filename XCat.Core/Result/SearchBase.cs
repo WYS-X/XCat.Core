@@ -1,4 +1,6 @@
 ﻿
+using static OrderByExpression;
+
 public class SearchBase
 {
     public SearchBase()
@@ -29,4 +31,6 @@ public class SearchBase
     }
 
     public string Text { get; set; }
+    public string Sort { get; set; }
+    public SortDirection SortOrder { get; set; }
 }

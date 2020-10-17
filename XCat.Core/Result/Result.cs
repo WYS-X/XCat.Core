@@ -13,16 +13,14 @@ public class Result : IResult
     public int Code { get; set; }
     public string Message { get; set; }
 
-    public void Fail(int code = 1, string message = "")
+    public static Result Fail(int code = 1, string message = "")
     {
-        this.Code = code;
-        this.Message = message;
+        return new Result(code, message);
     }
 
-    public void Succeed(string message = "")
+    public static Result Success(string message = "")
     {
-        this.Code = 0;
-        this.Message = message;
+        return new Result(0, message);
     }
 }
 

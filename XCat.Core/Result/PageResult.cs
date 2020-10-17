@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 public class PageResult<T> : Result
 {
@@ -8,17 +9,11 @@ public class PageResult<T> : Result
     {
         this.Data = new List<T>();
     }
-<<<<<<< HEAD
     public PageResult(int code, string msg = "") : base(code, msg) 
     {
         this.Data = new List<T>();
-=======
-    public PageResult(int code, string msg = ""): base(code, msg)
-    {
-
->>>>>>> 917e9592134be2f0be5cb2503b820c823328d891
     }
-
+    
     public int Index { get; set; }
     public int Size { get; set; }
     public int Count { get; set; }
@@ -54,6 +49,11 @@ public static class PageResultExtension
     public static PageResult<T> ToPageResult<T>(this IQueryable<T> query, SearchBase request)
     {
         return query.ToPageResult(request.Index, request.Size);
+    }
+
+    public static PageResult<T> ToPageResult<S,T>(this IQueryable<S> query, SearchBase request, Func<S,T> func)
+    {
+        return query.ToPageResult(request.Index, request.Size).Translate<S,T>(func);
     }
 
     public static PageResult<target> Translate<curr, target>(this PageResult<curr> source, Func<curr, target> func)
