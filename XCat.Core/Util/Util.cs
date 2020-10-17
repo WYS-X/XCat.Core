@@ -130,6 +130,7 @@ public static class Util
     //    }
     //}
 
+    #region 时间
     /// <summary>
     /// 明天时间，不包含时间部分
     /// 示例：2020/4/29
@@ -140,23 +141,29 @@ public static class Util
         var dt = DateTime.Now.AddDays(1);
         return new DateTime(dt.Year, dt.Month, dt.Day);
     }
-
     public static long GetTimestamp()
     {
         TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
         return Convert.ToInt64(ts.TotalSeconds);
     }
-    public static DateTime? GetTimeFromTimestamp(string timestamp, bool isSecond = false)
-    {
-        if (string.IsNullOrEmpty(timestamp))
-            return null;
-        return GetTimeFromTimestamp(long.Parse(timestamp), isSecond);
-    }
-    public static DateTime? GetTimeFromTimestamp(long timestamp, bool isSecond = false)
+    /// <summary>
+    /// 从时间戳获取时间
+    /// </summary>
+    /// <param name="timestamp"></param>
+    /// <returns></returns>
+    public static DateTime? GetTime(long timestamp)
     {
         if (timestamp <= 0)
             return null;
-        var dt = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-        return dt.AddSeconds(timestamp / (isSecond ? 1 : 1000));
+        if (timestamp.ToString().Length == 15)
+            timestamp *= 1000;
+        return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds(timestamp);
     }
+    public static DateTime? GetTime(string timestamp)
+    {
+        if (string.IsNullOrEmpty(timestamp))
+            return null;
+        return GetTime(long.Parse(timestamp));
+    }
+    #endregion
 }
