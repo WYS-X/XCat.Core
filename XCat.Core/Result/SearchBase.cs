@@ -39,5 +39,5 @@ public class SearchBase
     /// <summary>
     /// 排序方式
     /// </summary>
-    public SortDirection SortOrder { get; set; }
+    public SortDirection SortDirection { get; set; }
 }
