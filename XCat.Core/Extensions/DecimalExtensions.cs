@@ -23,4 +23,14 @@ public static class DecimalExtensions
     {
         return Math.Round(value, num, MidpointRounding.AwayFromZero);
     }
+
+    /// <summary>
+    /// 转换为价格字符串，小数点最多两位
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string PriceStr(this decimal value)
+    {
+        return value.Price().ToString().Trim('0').Trim('.');
+    }
 }
