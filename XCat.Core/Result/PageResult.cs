@@ -14,7 +14,7 @@ public class PageResult<T> : Result
         this.Data = new List<T>();
     }
     
-    public int Index { get; set; }
+    public int Page { get; set; }
     public int Size { get; set; }
     public int Count { get; set; }
     public int Pages
@@ -27,9 +27,9 @@ public class PageResult<T> : Result
         }
     }
 
-    public bool HasPrevious => (Index > 0);
+    public bool HasPrevious => (Page > 0);
 
-    public bool HasNext => (Index + 1 < Pages);
+    public bool HasNext => (Page + 1 < Pages);
     public List<T> Data { get; set; }
 }
 
@@ -40,7 +40,7 @@ public static class PageResultExtension
         return new PageResult<T>
         {
             Count = query.Count(),
-            Index = pageIndex,
+            Page = pageIndex,
             Size = pageSize,
             Data = query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList()
         };
@@ -59,7 +59,7 @@ public static class PageResultExtension
     {
         var res = new PageResult<target>()
         {
-            Index = source.Index,
+            Page = source.Page,
             Count = source.Count,
             Size = source.Size,
             Data = source.Data.Select(x => func(x)).ToList()

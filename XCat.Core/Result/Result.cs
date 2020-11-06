@@ -39,7 +39,7 @@ public static class ResultExtensions
         result.Code = model.Code;
         result.Message = model.Message;
         result.Count = model.Count;
-        result.Index = model.Index;
+        result.Page = model.Page;
         result.Size = model.Size;
         result.Data = new List<TResult>();
         if (model.Data != null)

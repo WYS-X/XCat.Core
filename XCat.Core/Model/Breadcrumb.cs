@@ -11,6 +11,7 @@ public class Breadcrumbs
     public Breadcrumbs(bool showHome = true)
     {
         ShowHome = showHome;
+        items = new List<BreadcrumbItem>();
     }
     /// <summary>
     /// 展示首页
@@ -41,6 +42,13 @@ public class Breadcrumbs
             {
                 return items;
             }
+        }
+    }
+    public bool Has
+    {
+        get
+        {
+            return items != null && items.Count > 0;
         }
     }
 }
