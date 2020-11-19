@@ -48,7 +48,7 @@ public static class PageResultExtension
 
     public static PageResult<T> ToPageResult<T>(this IQueryable<T> query, SearchBase request)
     {
-        return query.ToPageResult(request.Index, request.Size);
+        return query.ToPageResult(request.Page, request.Size);
     }
     public static PageResult<T>ToPageResult<S,T>(this IQueryable<S> query, SearchBase request, Func<S,T> func)
     {
