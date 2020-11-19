@@ -6,13 +6,13 @@ public class SearchBase
     public SearchBase()
     {
         _size = 10;
-        Index = 1;
+        Page = 1;
         Text = string.Empty;
     }
 
     private int _size;
 
-    public int Index { get; set; }
+    public int Page { get; set; }
 
     public int Size
     {
