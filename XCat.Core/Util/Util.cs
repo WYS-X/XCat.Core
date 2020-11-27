@@ -103,6 +103,11 @@ public static class Util
             return false;
     }
 
+    public static DateTime? GetTimeFromString(string couponEndTime)
+    {
+        throw new NotImplementedException();
+    }
+
     public static string MD5(string str)
     {
         MD5 md5 = new MD5CryptoServiceProvider();
