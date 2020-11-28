@@ -165,5 +165,13 @@ public static class Util
             return null;
         return GetTime(long.Parse(timestamp));
     }
+    public static DateTime? GetTimeFromString(string time)
+    {
+        DateTime t = DateTime.Now;
+        if (DateTime.TryParse(time, out t))
+            return t;
+        else
+            return null;
+    }
     #endregion
 }
