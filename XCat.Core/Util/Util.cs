@@ -34,9 +34,23 @@ public static class Util
         password = MD5(password);
         return password;
     }
-    public static string GetPassword(string str)
+    /// <summary>
+    /// 获取密码
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="forValid">true则str为MD5三次后的字符串</param>
+    /// <returns></returns>
+    public static string GetPassword(string str, bool forValid)
     {
-        return MD5(str, 3);
+        string salt = "X20C20D";
+        if(forValid)
+        {
+            return MD5(salt + forValid, 2);
+        }
+        else
+        {
+            return MD5(salt + MD5(str, 3), 2);
+        }        
     }
 
     public static string MD5(string str, int times)
@@ -87,6 +101,11 @@ public static class Util
             return true;
         else
             return false;
+    }
+
+    public static DateTime? GetTimeFromString(string couponEndTime)
+    {
+        throw new NotImplementedException();
     }
 
     public static string MD5(string str)

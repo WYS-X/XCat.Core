@@ -21,7 +21,15 @@ public class Result<T> : Result, IResult<T>
 {
     public Result() : base() { Data = default; }
     public Result(T data, string message = "") : base(0, message) { Data = data; }
+    public Result(int code, string msg = "")
+    {
+        Code = code;
+        Message = msg;
+    }
     public T Data { get; set; }
+
+    public new static Result<T> Success(string message = "") { return new Result<T>(0, message); }
+    public new static Result<T> Fail(int code = 1, string message = "") { return new Result<T>(code, message); }
 
     public void Succeed(T data)
     {
