@@ -62,6 +62,11 @@ public static class Util
         return str;
     }
 
+    public static string GetAvatar(string username)
+    {
+        return $"https://robohash.org/{username}?set=set4";
+    }
+
     public static bool IsMobile(string mobile)
     {
         Regex regex = new Regex(@"^(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$");

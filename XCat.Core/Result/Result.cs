@@ -29,6 +29,7 @@ public class Result<T> : Result, IResult<T>
     public T Data { get; set; }
 
     public new static Result<T> Success(string message = "") { return new Result<T>(0, message); }
+    public static Result<T> Success(T value, string message = "") { return new Result<T> { Data = value, Message = message, Code = 0 }; }
     public new static Result<T> Fail(int code = 1, string message = "") { return new Result<T>(code, message); }
 
     public void Succeed(T data)
