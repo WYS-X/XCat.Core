@@ -45,7 +45,7 @@ public static class Util
         string salt = "X20C20D";
         if(forValid)
         {
-            return MD5(salt + forValid, 2);
+            return MD5(salt + str, 2);
         }
         else
         {
