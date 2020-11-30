@@ -103,11 +103,6 @@ public static class Util
             return false;
     }
 
-    public static DateTime? GetTimeFromString(string couponEndTime)
-    {
-        throw new NotImplementedException();
-    }
-
     public static string MD5(string str)
     {
         MD5 md5 = new MD5CryptoServiceProvider();
@@ -183,6 +178,14 @@ public static class Util
         if (string.IsNullOrEmpty(timestamp))
             return null;
         return GetTime(long.Parse(timestamp));
+    }
+    public static DateTime? GetTimeFromString(string time)
+    {
+        DateTime t = DateTime.Now;
+        if (DateTime.TryParse(time, out t))
+            return t;
+        else
+            return null;
     }
     #endregion
 }
