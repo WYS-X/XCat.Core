@@ -193,4 +193,32 @@ public static class Util
             return null;
     }
     #endregion
+
+    #region 文件
+    /// <summary>
+    /// 获取文件扩展名
+    /// </summary>
+    /// <param name="filename"></param>
+    /// <returns></returns>
+    public static string GetFileExtension(string filename)
+    {
+        return filename.Substring(filename.LastIndexOf('.'));
+    }
+    /// <summary>
+    /// 生成新文件名
+    /// </summary>
+    /// <param name="filename"></param>
+    /// <returns></returns>
+    public static string GetNewFileName(string filename)
+    {
+        return filename.Substring(0, filename.LastIndexOf('.')) + "_" + DateTime.Now.ToString("HHmmss") + GetFileExtension(filename);
+    }
+    public static void CreateDirectoryIfEmpty(string directory)
+    {
+        if(!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+    }
+    #endregion
 }
