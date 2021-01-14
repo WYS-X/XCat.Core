@@ -15,6 +15,7 @@ public class Result : IResult
 
     public static Result Success(string message = "") { return new Result(0, message); }
     public static Result Fail(int code = 1, string message = "") { return new Result(code, message); }
+    public static Result Fail(ResultCode code = ResultCode.UNKNOWN, string message = "") { return new Result((int)code, message); }
 }
 
 public class Result<T> : Result, IResult<T>
