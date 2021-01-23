@@ -16,7 +16,7 @@ public static class ControllerExtensions
         var currDate = DateTime.Now;
         var formData = request.Form;
         var root = baseDir;
-        var filePath = path + formData["path"] + "/" + currDate.ToString("yyyyMMdd") + "/";
+        var filePath = formData["path"] + "/" + path + currDate.ToString("yyyyMMdd") + "/";
         Util.CreateDirectoryIfEmpty(root + filePath);
 
         foreach (var file in formData.Files)
